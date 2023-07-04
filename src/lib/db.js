@@ -1,7 +1,7 @@
 import { MongoClient } from "mongodb"
-import { CONNECTION_STRING } from '$env/static/private';
+import { MONGODB_URI } from '$env/static/private';
 
-const client = new MongoClient(CONNECTION_STRING)
+const client = new MongoClient(MONGODB_URI)
 await client.connect()
 
 export default client.db('Tinochan') // select database
