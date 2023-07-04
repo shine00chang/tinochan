@@ -1,8 +1,13 @@
 import { json } from '@sveltejs/kit';
+import db from '$lib/db.js';
 
+export async function GET() {
 
-export function GET() {
-	const number = Math.floor(Math.random() * 6) + 1;
+    const forums = await db
+        .collection("Forums")
+        .find()
+        .toArray();
 
-	return json(`here's your lucky number: ${number}`);
+    console.log(forums);
+	return json(forums);
 }

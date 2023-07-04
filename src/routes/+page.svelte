@@ -1,19 +1,23 @@
 <script>
     // States
-    let lucky_text;
+    let forums;
 
     async function onclick () {
         const response = await fetch ("/api/test");
-        lucky_text = await response.json();
+        forums = await response.json();
+        console.log(forums);
     }
 </script>
 
 <div> 
-    <p>Get your lucky number from svelte's server!</p>
-    <button on:click={onclick}>Claim Now!</button><br>
+    <p>Click here to load forums from the database</p>
+    <button on:click={onclick}>Load Now!</button><br>
 
-    {#if lucky_text != undefined} 
-        Tada:
-        <p>{lucky_text}<p>
+    {#if forums != undefined} 
+        {#each forums as { title, content }}
+            <h3>{title}</h3>
+            <p>{content}<p>
+            <br>WW
+        {/each}
     {/if}
 </div>
