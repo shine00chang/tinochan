@@ -1,23 +1,2 @@
-<script>
-    // States
-    let forums;
-
-    async function onclick () {
-        const response = await fetch ("/api/test");
-        forums = await response.json();
-        console.log(forums);
-    }
-</script>
-
-<div> 
-    <p>Click here to load forums from the database</p>
-    <button on:click={onclick}>Load Now!</button><br>
-
-    {#if forums != undefined} 
-        {#each forums as { title, content }}
-            <h3>{title}</h3>
-            <p>{content}<p>
-            <br>
-        {/each}
-    {/if}
-</div>
+<h1> Tinochan </h1>
+<a href="/feed">Check out Tinochan's secret stash!!</a>
