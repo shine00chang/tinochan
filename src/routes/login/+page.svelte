@@ -3,6 +3,7 @@
 
     let username;
     let password;
+    console.log("hi");
 
     async function onClick () {
         const body = {
@@ -18,7 +19,7 @@
         });
         console.log("login returned with status: ", res.status);
         if (res.status === 200) 
-            goto("/");
+            goto("../");
     }
 </script>
 
