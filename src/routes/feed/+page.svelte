@@ -9,16 +9,20 @@
     }
 </script>
 
-<h1>Welcome to Tinochan's super-secret lair</h1>
-<h2>/ᐠ｡ꞈ｡ᐟ\ɴʏᴀ~</h2>
+<div class="space-y-4">
 
-<p>Click here to load forums from the database</p>
-<button on:click={onclick}>Load Now!</button><br>
+<div class="text-2xl">/ᐠ｡ꞈ｡ᐟ\ɴʏᴀ~</div>
+<div class="text-3xl">Welcome to Tinochan's super-secret feed!</div>
+
+<div>Click here to load forums from the database</div>
+<button class="btn-1" on:click={onclick}>Load Now!</button><br>
 
 {#if forums != undefined} 
     {#each forums as { title, content }}
-        <h3>{title}</h3>
-        <p>{content}<p>
+        <div class="text-xl font-medium">{title}</div>
+        <div>{content}</div>
         <br>
     {/each}
 {/if}
+
+</div>

@@ -22,7 +22,12 @@
     }
 </script>
 
-<h1> Signup </h1>
+<div
+    class="space-y-4"    
+    >
+<label>username: </label>
 <input bind:value={username}><br>
+<label>password: </label>
 <input bind:value={password}><br>
-<button on:click={onClick}>Signup</button>
+<button class="btn-1" on:click={onClick}>Signup</button>
+</div>

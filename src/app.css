@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .hover-1 {
+        @apply duration-300 hover:font-medium hover:tracking-widest hover:text-sky-600;
+    }
+
+    .btn-1 {
+        @apply font-bold underline decoration-sky-500 decoration-2 tracking-wide p-2 duration-300 hover:tracking-widest hover:decoration-slate-500;
+    }
+
+    input {
+        @apply p-2 border-solid border-2 border-slate-400 rounded focus:border-sky-300;
+    }
+}
+
