@@ -1,29 +1,26 @@
 <script>
     import { goto } from '$app/navigation';
 
-    async function onLogin () {
-        console.log("hii");
-        goto("/login");
-    }
-
-    async function onSignup () {
-        goto("/signup");
-    }
-
     async function onLogout () {
         await fetch("/api/logout", { method: "POST" });
     }
 </script>
 
-<div> 
-    <a style="font-size: 2rem" on:click={() => goto("/")}>Tinochan! <a>
-    <a href="/login">login</a>
-    <a href="/signup">signup</a>
-    <a href="/" on:click={onLogout}>logout</a>
+<svelte:head>
+	<title>Tinochan</title>
+	<html lang="en" />
+</svelte:head>
 
-    <br>
-    <hr>
-    <br>
+<div class="text-2xl"> 
+    <div class="" style="font-size: 2rem" on:click={_ => goto("/")}>Tinochan! </div>
+
+    <div class="">spacer</div>
+
+    <div class="" on:click={_ => goto("/login")}>login</div>
+    <div class="" on:click={_ => goto("/signup")}>signup</div>
+    <div class="" on:click={onLogout}>logout</div>
 </div>
+
+<hr>
 
 <slot/>
