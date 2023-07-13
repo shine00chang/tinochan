@@ -15,9 +15,9 @@
 [MongoDB](https://mongodb.com/) <br>
 
 <div align="center">
-  <h1>
+
   <a href="(https://tinochan.vercel.app/)">🚀</a>
-  </h1>
+
 <div align="center">
 
 [Launch](https://tinochan.vercel.app) <br>
