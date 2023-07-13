@@ -15,4 +15,4 @@
 [MongoDB](https://mongodb.com/) <br>
 
 
-[🚀](tinochan.vercel.app) 
+[🚀](https://tinochan.vercel.app/) 
