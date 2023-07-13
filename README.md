@@ -14,5 +14,8 @@
 [Vercel](https://vercel.com/) <br>
 [MongoDB](https://mongodb.com/) <br>
 
-
-[🚀](https://tinochan.vercel.app/) 
+<div align="center">
+  <h1>
+  <a href="[url](https://tinochan.vercel.app/)">🚀</a>
+  </h1>
+<div align="center">
