@@ -16,6 +16,6 @@
 
 <div align="center">
   <h1>
-  <a href="[url](https://tinochan.vercel.app/)">🚀</a>
+  <a href="(https://tinochan.vercel.app/)">🚀</a>
   </h1>
 <div align="center">
