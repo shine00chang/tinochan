@@ -5,7 +5,7 @@ const forums = db.collection("Forums");
 
 export async function PUT ({ request }) {
     console.log("connected")
-    /*let json;
+    let json;
     try {
         json = await request.json()
     } catch (e) {
@@ -15,7 +15,7 @@ export async function PUT ({ request }) {
     const {
         title,
         content
-    } = json;*/
+    } = json;
 
     if (!title || !content)  
         return new Response("request body missing 'title' or 'content'", { status: 400 });
