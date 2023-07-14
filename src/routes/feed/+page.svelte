@@ -1,4 +1,5 @@
 <script>
+    import { goto } from '$app/navigation';
     // States
     let forums;
 
@@ -16,6 +17,8 @@
 
 <div>Click here to load forums from the database</div>
 <button class="btn-1" on:click={onclick}>Load Now!</button><br>
+
+<button class="btn-1" on:click={_ => goto("/post")}>Create Post</button><br>
 
 {#if forums != undefined} 
     {#each forums as { title, content }}
