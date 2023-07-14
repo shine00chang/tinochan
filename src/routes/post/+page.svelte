@@ -5,16 +5,16 @@
    
     async function onClick () {
         const body = {
-        title,
-        content
-     }
-     console.log("posting:", body);
-     const res = await fetch("/api/post", {
+            title,
+            content
+        }
+        console.log("posting:", body);
+        const res = await fetch("/api/post", {
             method: "PUT",
             body: JSON.stringify(body)
         });
         console.log("post status: ", res.status);
-        if (res.status == 200) 
+        if (res.status == 201)
             goto("../feed");
     }
 </script>
@@ -35,7 +35,7 @@
 <br>    
 <textarea bind:value={content} placeholder="Enter content here..."></textarea><br>
 <br>
-<button class="btn-1" on:click={onClick}>Initiate Post</button>
-<button class="btn-1" on:click={_ => goto("/feed")}>Scrap Post</button>
+<button class="btn-1" on:click={onClick}>Post</button>
+<button class="btn-1" on:click={_ => goto("/feed")}>Cancel</button>
 
 

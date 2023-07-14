@@ -1,4 +1,4 @@
-import { redirect } from '@sveltejs/kit';
+import { json } from '@sveltejs/kit';
 import db from '$lib/db.js';
 
 const forums = db.collection("Forums");
@@ -29,5 +29,15 @@ export async function PUT ({ request }) {
 
     console.log("created post:", feed);
 
-    return new Response("done", { status: 200 });
+    return new Response("done", { status: 201 });
+}
+
+export async function GET() {
+
+    const posts = await forums 
+        .find()
+        .toArray();
+
+    console.log(posts);
+	return json(posts);
 }

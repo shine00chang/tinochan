@@ -4,7 +4,7 @@
     let forums;
 
     async function onclick () {
-        const response = await fetch ("/api/test");
+        const response = await fetch ("/api/post");
         forums = await response.json();
         console.log(forums);
     }
