@@ -8,11 +8,11 @@
     }
 </script>
 
-<div class="flex flex-row space-x-8 p-4 bg-gradient-to-r from-zinc-200 to-sky-200 drop-shadow-lg"> 
-    <div 
-        class="font-bold text-2xl underline decoration-sky-500 duration-300 hover:font-black hover:tracking-widest"
-        on:click={_ => goto("/")}
-    >Tinochan</div>
+
+<div class="sticky flex flex-row space-x-8 p-4 bg-gradient-to-r from-zinc-200 to-sky-200 drop-shadow-lg"> 
+    <div on:click={_ => goto("/")}>
+        <img src="src\routes\png\homev1.png" alt="Button" class="h-10 w-10"/>
+    </div>
 
     <div class="grow"></div>
 
@@ -25,3 +25,8 @@
 <div class="p-6">
 <slot/>
 </div>
+
+
+<footer class=" text-xs py-4 text-center bottom-0">
+    <p>&copy; 2023 Tinovation Club. All rights reserved.</p>
+  </footer>

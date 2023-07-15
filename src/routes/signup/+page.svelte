@@ -28,6 +28,6 @@
 <label>username: </label>
 <input bind:value={username}><br>
 <label>password: </label>
-<input bind:value={password}><br>
+<input type="password" bind:value={password}><br>
 <button class="btn-1" on:click={onClick}>Signup</button>
 </div>

@@ -2,8 +2,14 @@
     import { goto } from '$app/navigation';
 </script>
 
-<div class="font-bold text-4xl underline decoration-sky-500"> Tinochan </div>
-<br>
+<img src="src\routes\png\bannerv4.png" alt="Banner" class="mx-auto">
 
-<button class="hover-1" on:click={_ => goto("/feed")}>Enter Tinochan's secret stash!</button>
-<p> (You need to log in first) </p>
+<div class ="flex justify-center items-center flex-col space-y-4 ">
+   
+    <!--<div class="font-bold text-8xl underline decoration-sky-500"> Tinochan </div> -->
+    
+    <button class="text-3xl hover-1" on:click={_ => goto("/feed")}>→Enter Forum←</button> 
+   
+    <p> (You need to log in first) </p>
+
+</div>
