@@ -11,7 +11,7 @@
 
 <div class="sticky flex flex-row space-x-8 p-4 bg-gradient-to-r from-zinc-200 to-sky-200 drop-shadow-lg"> 
     <div on:click={_ => goto("/")}>
-        <img src="/src/routes/homev1.png" alt="Button" class="h-10 w-10"/>
+        <img src="/homev1.png" alt="Button" class="h-10 w-10"/>
     </div>
 
     <div class="grow"></div>

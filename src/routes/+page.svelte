@@ -2,7 +2,7 @@
     import { goto } from '$app/navigation';
 </script>
 
-<img src="/src/routes/bannerv4.png" alt="Banner" class="mx-auto">
+<img src="/bannerv4.png" alt="Banner" class="mx-auto">
 
 <div class ="flex justify-center items-center flex-col space-y-4 ">
    
