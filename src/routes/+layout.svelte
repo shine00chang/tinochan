@@ -6,9 +6,12 @@
         await fetch("/api/logout", { method: "POST" });
         goto("/");
     }
+
+    let anon = true;
 </script>
 
-
+<div>
+{#if anon}
 <div class="sticky flex flex-row space-x-8 p-4 bg-gradient-to-r from-zinc-200 to-sky-200 drop-shadow-lg"> 
     <div on:click={_ => goto("/")}>
         <img src="/homev1.png" alt="Button" class="h-10 w-10"/>
@@ -18,9 +21,18 @@
 
     <button class="rounded-full hover-1" on:click={_ => goto("/login")}>login</button>
     <button class="rounded-full hover-1" on:click={_ => goto("/signup")}>signup</button>
+</div>
+{:else}
+<div class="sticky flex flex-row space-x-8 p-4 bg-gradient-to-r from-zinc-200 to-sky-200 drop-shadow-lg"> 
+    <div on:click={_ => goto("/")}>
+        <img src="/homev1.png" alt="Button" class="h-10 w-10"/>
+    </div>
+
+    <div class="grow"></div>
     <button class="rounded-full hover-1" on:click={onLogout}>logout</button>
 </div>
-
+{/if}
+</div>
 
 <div class="p-6">
 <slot/>
