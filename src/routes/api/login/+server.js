@@ -2,17 +2,6 @@ import db from '$lib/db.js';
 
 const users = db.collection("Users");
 
-// Returns "session_cookie". Used to identify login status.
-export async function GET ({ _request, cookies }) {
-    const res = {
-        cookie: cookies.get('session')
-    };
-
-    console.log(res);
-
-    return new Response(JSON.stringify(res), { status: 200 });
-}
-
 
 // Logs in user by setting "session_cookie" as username.
 export async function POST ({ request, cookies }) {
@@ -33,7 +22,6 @@ export async function POST ({ request, cookies }) {
 
     const user = await users.findOne({ username });
     console.log("found user:", user);
-
 
     if (user.password !== password) {
 

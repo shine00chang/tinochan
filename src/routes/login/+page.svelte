@@ -1,9 +1,8 @@
 <script>
-    import { goto } from '$app/navigation';
+    import { goto, invalidateAll } from '$app/navigation';
 
     let username;
     let password;
-    console.log("hi");
 
     async function onClick () {
         const body = {
@@ -18,8 +17,13 @@
             body: JSON.stringify(body)
         });
         console.log("login returned with status: ", res.status);
-        if (res.status === 200) 
+
+        // Force refresh of all pages to update login state
+        await invalidateAll();
+
+        if (res.status === 200) {
             goto("../");
+        }
     }
 </script>
 
