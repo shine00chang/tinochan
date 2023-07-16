@@ -1,7 +1,12 @@
 <script>
     import { goto } from '$app/navigation';
+
+    export let data;
+    console.log("server data from page.svelte: ", data);
+
 </script>
 
+<div>session_cookie: {data.session_cookie}</div>
 <img src="/bannerv4.png" alt="Banner" class="mx-auto">
 
 <div class ="flex justify-center items-center flex-col space-y-4 ">

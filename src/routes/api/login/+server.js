@@ -1,9 +1,20 @@
-import { redirect } from '@sveltejs/kit';
 import db from '$lib/db.js';
 
 const users = db.collection("Users");
 
+// Returns "session_cookie". Used to identify login status.
+export async function GET ({ _request, cookies }) {
+    const res = {
+        cookie: cookies.get('session')
+    };
 
+    console.log(res);
+
+    return new Response(JSON.stringify(res), { status: 200 });
+}
+
+
+// Logs in user by setting "session_cookie" as username.
 export async function POST ({ request, cookies }) {
     let json;
     try {
