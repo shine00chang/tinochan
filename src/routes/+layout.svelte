@@ -34,7 +34,7 @@
         <div class="grow"></div>
         <button class="rounded-full hover-1" on:click={onLogout}>logout</button>
 
-    {/if}
+    {/if}   
 </div>
 
 <!-- Page Slot -->
@@ -45,5 +45,8 @@
 
 <!-- Footer -->
 <footer class=" text-xs py-4 text-center bottom-0">
+    <p>See any bugs? report them</p> 
+    <a class="text-blue-500" href="https://github.com/shine00chang/tinochan">here.</a><br>
+    <br>
     <p>&copy; 2023 Tinovation Club. All rights reserved.</p>
 </footer>
