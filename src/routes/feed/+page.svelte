@@ -1,6 +1,8 @@
 <script>
+	import Markdown from 'svelte-exmarkdown';
     import { goto } from '$app/navigation';
     import { onMount } from 'svelte';
+
     // States
     let forums;
 
@@ -17,6 +19,7 @@
 
 <div class="text-2xl">(；一_一)</div>
 <br>
+
 <div class="flex justify-center">
     <div class="items-center h-32 text-5xl">Forum: Main</div>
 </div>
@@ -25,9 +28,13 @@
 
 {#if forums != undefined} 
     {#each forums as { user, title, content }}
-        <div class="text-xl font-medium">{title}</div>
-        <div class="font-bold text-s">By: {user}</div>
-        <div>{content}</div>
+        <div class="text-3xl font-bold">{title}</div>
+        <div class="font-medium italic text-s">By: {user}</div>
+        <hr>
+
+        <div class="md"> 
+            <Markdown md={content}/>
+        </div>
         <br>
     {/each}
 {/if}

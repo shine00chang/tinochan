@@ -16,3 +16,21 @@
     }
 }
 
+
+/* CSS for generated markdown styles
+ */
+@layer base {
+    .md h1 {
+        @apply text-3xl font-bold
+    }
+
+    .md h2 {
+        @apply text-2xl font-bold
+    }
+    .md h3 {
+        @apply text-xl font-medium
+    }
+    .md a {
+        @apply text-blue-600 underline
+    }
+}
