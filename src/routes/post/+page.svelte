@@ -2,11 +2,13 @@
     import { goto } from '$app/navigation';
     let title;
     let content;
+    let user;
    
     async function onClick () {
         const body = {
             title,
-            content
+            content,
+            user
         }
         console.log("posting:", body);
         const res = await fetch("/api/post", {
@@ -30,6 +32,7 @@
   </style>
 
 <!--<big class="rounded-full hover-1">Create Post</big><br>-->
+<input bind:value={user} placeholder="Enter alias here...">
 
 <input bind:value={title} placeholder="Enter title here..."><br>
 <br>    

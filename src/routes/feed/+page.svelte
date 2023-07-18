@@ -15,17 +15,18 @@
 
 <div class="space-y-4">
 
-<div class="text-2xl">/ᐠ｡ꞈ｡ᐟ\ɴʏᴀ~</div>
-<div class="text-3xl">Welcome to Tinochan's forum!</div>
-
-<!--<div>Click here to load forums from the database</div>
-<button class="btn-1" on:click={onclick}>Load Now!</button><br>-->
+<div class="text-2xl">(；一_一)</div>
+<br>
+<div class="flex justify-center">
+    <div class="items-center h-32 text-5xl">Forum: Main</div>
+</div>
 
 <button class="btn-1" on:click={_ => goto("/post")}>Create Post</button><br>
 
 {#if forums != undefined} 
-    {#each forums as { title, content }}
+    {#each forums as { user, title, content }}
         <div class="text-xl font-medium">{title}</div>
+        <div class="font-bold text-s">By: {user}</div>
         <div>{content}</div>
         <br>
     {/each}

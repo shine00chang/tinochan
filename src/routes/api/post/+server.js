@@ -14,15 +14,17 @@ export async function PUT ({ request }) {
 
     const {
         title,
-        content
+        content,
+        user
     } = json;
 
-    if (!title || !content)  
-        return new Response("request body missing 'title' or 'content'", { status: 400 });
+    if (!title || !content || !user)  
+        return new Response("request body missing 'title' 'content' or 'user'", { status: 400 });
 
     const feed = {
         title,
         content,
+        user,
     };
 
     await forums.insertOne(feed);
