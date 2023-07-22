@@ -1,21 +1,22 @@
 <script>
-	import Markdown from 'svelte-exmarkdown';
     import { goto } from '$app/navigation';
     import { onMount } from 'svelte';
+    import Forum from '$lib/components/forum.svelte';
 
     // States
     let forums;
 
-    async function onclick () {
+    onMount( async () => {
         const response = await fetch ("/api/post");
-        forums = await response.json();
-        console.log(forums);
-    }
 
-    onMount(onclick);
+        if (response.status == 200) 
+            forums = await response.json();
+        else 
+            console.error("failed to fetch posts");
+    });
 </script>
 
-<div class="space-y-4">
+<div class="space-y-4 mx-40">
 
 <div class="text-2xl">(；一_一)</div>
 <br>
@@ -27,15 +28,8 @@
 <button class="btn-1" on:click={_ => goto("/post")}>Create Post</button><br>
 
 {#if forums != undefined} 
-    {#each forums as { user, title, content }}
-        <div class="text-3xl font-bold">{title}</div>
-        <div class="font-medium italic text-s">By: {user}</div>
-        <hr>
-
-        <div class="md"> 
-            <Markdown md={content}/>
-        </div>
-        <br>
+    {#each forums as forum}
+        <Forum forum={forum}/>
     {/each}
 {/if}
 

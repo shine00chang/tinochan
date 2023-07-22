@@ -40,6 +40,5 @@ export async function GET() {
         .find()
         .toArray();
 
-    console.log(posts);
 	return json(posts);
 }
