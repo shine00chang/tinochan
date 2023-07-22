@@ -3,17 +3,9 @@
     import { onMount } from 'svelte';
     import Forum from '$lib/components/forum.svelte';
 
-    // States
-    let forums;
+    export let data;
+    const { forums } = data;
 
-    onMount( async () => {
-        const response = await fetch ("/api/post");
-
-        if (response.status == 200) 
-            forums = await response.json();
-        else 
-            console.error("failed to fetch posts");
-    });
 </script>
 
 <div class="space-y-4 mx-40">
@@ -27,10 +19,8 @@
 
 <button class="btn-1" on:click={_ => goto("/post")}>Create Post</button><br>
 
-{#if forums != undefined} 
-    {#each forums as forum}
-        <Forum forum={forum}/>
-    {/each}
-{/if}
+{#each forums as forum}
+    <Forum forum={forum}/>
+{/each}
 
 </div>
