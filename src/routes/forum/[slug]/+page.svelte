@@ -34,9 +34,9 @@
     function reloadPage() {
     location.reload();
   }
-  
+  let location = window.location.href
   async function onShare () {
-        navigator.clipboard.writeText(window.location.href);
+        navigator.clipboard.writeText("Read this forum on Tinochan: " + location );
     }
 </script>
 <button class="btn-1 text-2xl" on:click={_ => goto("/feed")}>← back</button>

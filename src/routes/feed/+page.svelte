@@ -17,7 +17,7 @@
     <div class="items-center h-32 text-5xl">Forum List</div>
 </div>
 
-<button class="btn-1" on:click={_ => goto("/post")}>Create Forum</button><br>
+<button class="btn-1" on:click={_ => goto("/post")}>create forum</button><br>
 
 {#each forums as forum}
     <Forum forum={forum}/>
