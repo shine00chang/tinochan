@@ -43,8 +43,8 @@ textarea {
 <input bind:value={user} placeholder="Enter alias here...">
 <input bind:value={title} placeholder="Enter title here...">
 <div class="grow"/> 
-<button class="btn-1" on:click={onClick}>Post</button>
-<button class="btn-1" on:click={_ => goto("/feed")}>Cancel</button>
+<button class="btn-1" on:click={onClick}>create</button>
+<button class="btn-1" on:click={_ => goto("/feed")}>cancel</button>
 </div>
 <br>
 <br>    

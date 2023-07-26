@@ -1,6 +1,7 @@
 <script>
 	import Markdown from 'svelte-exmarkdown';
     import Reply from '$lib/components/reply.svelte';
+    import { goto } from '$app/navigation';
 
     export let data;
     const {
@@ -30,12 +31,18 @@
             console.log('reply created');
         }
     }
-
+    function reloadPage() {
+    location.reload();
+  }
+  
+  async function onShare () {
+        navigator.clipboard.writeText(window.location.href);
+    }
 </script>
-
+<button class="btn-1 text-2xl" on:click={_ => goto("/feed")}>← back</button>
 <div class="mx-10 my-10">
-<div class="text-5xl font-bold">{forum.title}</div>
-<div class="font-medium italic text-s">By: {forum.user}</div>
+<div class="text-5xl font-bold">{forum.title}</div><br>
+<div class="font-medium italic text-s">By: {forum.user}</div><br>
 <hr>
 
 <div class="md"> 
@@ -45,6 +52,7 @@
 <div class="flex"> 
     <div class="grow"/>
     <button class="btn-1" on:click={() => {userTag = ""; replyText = ""; replying = true;}}>reply</button>
+    <button class="btn-1" on:click={onShare}>copy link</button>
 </div>
 <br>
 
@@ -56,8 +64,9 @@
     <div class="flex"> 
         <input bind:value={userTag} placeholder="Enter alias here...">
         <div class="grow"/> 
-        <button class="btn-1" on:click={onReply}>Reply</button>
-        <button class="btn-1" on:click={() => reply = false}>Cancel</button>
+        <button class="btn-1" on:click={onReply, reloadPage}>reply</button>
+        <!--<button class="btn-1" on:click={() => reply = false}>cancel</button>-->
+        <button class="btn-1" on:click={reloadPage}>cancel</button>
     </div>
     <br>
     <br>    

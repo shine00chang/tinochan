@@ -28,12 +28,13 @@
 
         <button class="rounded-full hover-1" on:click={_ => goto("/login") }>login</button>
         <button class="rounded-full hover-1" on:click={_ => goto("/signup")}>signup</button>
-
+      
     {:else}
 
-        <div class="grow"></div>
+        <button class="rounded-full hover-1" on:click={_ => goto("/feed")}>forums</button>
         <button class="rounded-full hover-1" on:click={onLogout}>logout</button>
 
+       
     {/if}   
 </div>
 
