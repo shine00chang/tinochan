@@ -5,14 +5,20 @@
   <br>
 </div>
 
->**Warning**
->Construction in progress, site completion pending.
+>**Notice**:
+>v0.0.1 is accessible.
 
 ## Tech Stack
 
-[Svelte](https://svelte.dev/) <br>
-[Vercel](https://vercel.com/) <br>
-[MongoDB](https://mongodb.com/) <br>
+<h1 align="center"> 
+<a href="https://svelte.dev/">Svelte</a> +
+<a href="https://tailwindcss.com/docs/installation">Tailwind CSS</a> --
+<a href="https://mongodb.com/">MongoDB</a> →
+<a href="https://vercel.com/">Vercel</a> <br> 
+  <br>
+</h1>
+
+
 
 <div align="center">
 
