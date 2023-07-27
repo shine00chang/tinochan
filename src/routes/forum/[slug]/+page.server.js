@@ -56,7 +56,6 @@ export async function load({ params }) {
                 i--;
             }
         }
-        console.log(replies);
     }
 
     // Cast id from ObjectId into string
