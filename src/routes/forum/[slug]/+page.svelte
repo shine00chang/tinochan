@@ -1,52 +1,12 @@
 <script>
 	import Markdown from 'svelte-exmarkdown';
     import Reply from '$lib/components/reply.svelte';
-    import { goto, invalidateAll } from '$app/navigation';
-    import { onMount } from 'svelte';
+    import { goto } from '$app/navigation';
     import { page } from '$app/stores';
 
     export let data;
-    let {
-        forum,
-        replies
-    } = data;
-
-    // States
-    let replying = false;
-    let userTag = "";
-    let replyText = "";
-
-    console.log($page.url.href);
-
-    const onReply = async () => {
-        const body = {
-            user: userTag,
-            content: replyText,
-            forumId: forum._id,
-        }
-        const response = await fetch('/api/reply', {
-            method: "PUT",
-            body: JSON.stringify(body)
-        });
-
-        if (response.status != 201) {
-            console.error('reply PUT\'ing failed.');
-        } else {
-            console.log('reply created');
-            replying = false;
-            reloadPage();
-        }
-    }
-
-    // `InvalidateAll()` forces Sveltekit to re-run the `load()` function, giving us new `data`.
-    // Because we destructured the data object into `forum` and `replies`, those are not bounded
-    // and need to be re-assigned for reactivity to update.
-    async function reloadPage() {
-        await invalidateAll();
-        console.log(data);
-        ({ forum, replies } = data);
-    }
-
+    let {  forum, replies } = data;
+    $: ({forum, replies} = data);
 
     async function onShare () {
         navigator.clipboard.writeText($page.url.href );
@@ -67,43 +27,14 @@
 
 <div class="flex"> 
     <div class="grow"/>
-    <button class="btn-1" on:click={() => {userTag = ""; replyText = ""; replying = true;}}>reply</button>
     <button class="btn-1" on:click={onShare}>copy link</button>
 </div>
 <br>
 
-<!-- Reply interface -->
-{#if replying}
-    <div>
-
-    <div class="font-bold">Write your reply: </div>
-    <div class="flex"> 
-        <input bind:value={userTag} placeholder="Enter alias here...">
-        <div class="grow"/> 
-        <button class="btn-1" on:click={onReply}>reply</button>
-        <button class="btn-1" on:click={() => replying=false}>cancel</button>
-    </div>
-    <br>
-    <br>    
-
-    <textarea class="border-2 border-solid rounded p-2" style="width: 100%;" bind:value={replyText} placeholder="Enter content here..."></textarea>
-    <br>
-    <br>
-
-    <!-- This encapsulating div is necessary to apply markdown-specific styles to the generated result -->
-    <!-- We need to redefine the styling because tailwind resets all defaults for tags, and markdown renderers only assigns tags. -->
-    <div class="font-medium text-lg"> Markdown Preview: </div>
-    <div class="md border-2 border-solid rounded p-2">
-        <Markdown  md={replyText}/>
-    </div>
-    <hr/>
-
-    </div>
-{/if}
 
 <!-- Replies -->
 {#each replies as reply}
-    <Reply reply={reply}/>
+    <Reply forumId={forum._id} reply={reply}/>
     <br>
     <br>
 {/each}

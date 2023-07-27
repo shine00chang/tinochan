@@ -16,7 +16,8 @@ export async function PUT ({ request }) {
 
     const {
         user,
-        content
+        content,
+        referenceId
     } = json;
     const forumId = new ObjectId( json.forumId );
 
@@ -31,6 +32,7 @@ export async function PUT ({ request }) {
 
     const reply = {
         forumId: forumId.toString(),
+        referenceId,
         content,
         user,
     };
