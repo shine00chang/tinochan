@@ -10,10 +10,14 @@ const replies = db.collection("Replies");
 export async function load({ params }) {
 
     // Fetch forum by slug (id)
-    const queryf = {
-        _id: new ObjectId(params.slug)
-    };
-    const forum = await forums.findOne(queryf);
+    let _id;
+    try {
+        _id = new ObjectId(params.slug)
+    } catch (e) {
+        throw error(400, { message: "failed to fetch" });
+    }
+
+    const forum = await forums.findOne({_id});
 
     // If no forum found, slug is not an id
     if (forum == null || forum == undefined) {

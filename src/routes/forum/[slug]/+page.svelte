@@ -1,10 +1,12 @@
 <script>
 	import Markdown from 'svelte-exmarkdown';
     import Reply from '$lib/components/reply.svelte';
-    import { goto } from '$app/navigation';
+    import { goto, invalidateAll } from '$app/navigation';
+    import { onMount } from 'svelte';
+    import { page } from '$app/stores';
 
     export let data;
-    const {
+    let {
         forum,
         replies
     } = data;
@@ -13,6 +15,8 @@
     let replying = false;
     let userTag = "";
     let replyText = "";
+
+    console.log($page.url.href);
 
     const onReply = async () => {
         const body = {
@@ -29,16 +33,28 @@
             console.error('reply PUT\'ing failed.');
         } else {
             console.log('reply created');
+            replying = false;
+            reloadPage();
         }
     }
-    function reloadPage() {
-    location.reload();
-  }
-  let location = window.location.href
-  async function onShare () {
-        navigator.clipboard.writeText("Read this forum on Tinochan: " + location );
+
+    // `InvalidateAll()` forces Sveltekit to re-run the `load()` function, giving us new `data`.
+    // Because we destructured the data object into `forum` and `replies`, those are not bounded
+    // and need to be re-assigned for reactivity to update.
+    async function reloadPage() {
+        await invalidateAll();
+        console.log(data);
+        ({ forum, replies } = data);
+    }
+
+
+    async function onShare () {
+        navigator.clipboard.writeText($page.url.href );
     }
 </script>
+
+
+
 <button class="btn-1 text-2xl" on:click={_ => goto("/feed")}>← back</button>
 <div class="mx-10 my-10">
 <div class="text-5xl font-bold">{forum.title}</div><br>
@@ -64,9 +80,8 @@
     <div class="flex"> 
         <input bind:value={userTag} placeholder="Enter alias here...">
         <div class="grow"/> 
-        <button class="btn-1" on:click={onReply, reloadPage}>reply</button>
-        <!--<button class="btn-1" on:click={() => reply = false}>cancel</button>-->
-        <button class="btn-1" on:click={reloadPage}>cancel</button>
+        <button class="btn-1" on:click={onReply}>reply</button>
+        <button class="btn-1" on:click={() => replying=false}>cancel</button>
     </div>
     <br>
     <br>    
