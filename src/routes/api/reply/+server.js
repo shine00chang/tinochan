@@ -1,7 +1,8 @@
 import db from '$lib/db.js';
 import { ObjectId } from 'mongodb';
+import Filter from 'bad-words';
 
-
+const filter = new Filter({ placeHolder: 'x'});
 const replies = db.collection("Replies");
 
 
@@ -14,11 +15,14 @@ export async function PUT ({ request }) {
         return new Response("request body is not JSON", { status: 400 });
     }
 
-    const {
+    let {
         user,
         content,
         referenceId
     } = json;
+    user = filter.clean(user);
+    content = filter.clean(content);
+
     const forumId = new ObjectId( json.forumId );
 
     if (!forumId || !content || !user)  

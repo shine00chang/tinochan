@@ -14,7 +14,7 @@
         }
         console.log("posting:", body);
         const res = await fetch("/api/post", {
-            method: "PUT",
+            method: "POST",
             body: JSON.stringify(body)
         });
         console.log("post status: ", res.status);
