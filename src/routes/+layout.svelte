@@ -39,8 +39,10 @@
 </div>
 
 <!-- Page Slot -->
-<div class="p-6">
-<slot/>
+<div class="flex justify-center">
+  <div class="w-9/12" style="min-width: 600px;">
+    <slot/>
+  </div>
 </div>
 
 

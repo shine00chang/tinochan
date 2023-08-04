@@ -8,7 +8,7 @@
 
 </script>
 
-<div class="space-y-4 mx-40">
+<div class="space-y-4">
 
 <!--<div class="text-2xl">(；一_一)</div>-->
 <br>
