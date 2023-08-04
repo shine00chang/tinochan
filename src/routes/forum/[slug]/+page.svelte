@@ -4,14 +4,23 @@
     import ReplyMaker from '$lib/components/replyMaker.svelte';
     import { goto } from '$app/navigation';
     import { page } from '$app/stores';
-    export let data;
-
-    let { forum, replies } = data;
+    import { onMount } from 'svelte';
+    
+    let forum;
+    let replies;
     let replying = false;
 
-    // By using a reactive function, this destructures `data` on reload. 
-    // Without this, the destructured variables does not mutate after `data` has been mutated. 
-    $: ({forum, replies} = data);
+
+    const refresh = async () => {
+        const rsp = await fetch($page.url.href);
+        const data = await rsp.json();
+        console.log(data);
+        ({forum, replies} = data);
+    };
+
+
+    onMount(refresh);
+    setInterval(refresh, 10000);
 
 
     async function onShare () {
@@ -20,6 +29,7 @@
 </script>
 
 
+{#if forum != undefined}
 
 <button class="btn-1 text-2xl" on:click={_ => goto("/feed")}>← back</button>
 <div class="mx-5 my-10">
@@ -49,9 +59,11 @@
 
 <!-- Replies -->
 {#each replies as reply}
-    <Reply forumId={forum._id} reply={reply}/>
+    <Reply on:done={refresh} forumId={forum._id} reply={reply}/>
     <br>
     <br>
 {/each}
 
 </div>
+
+{/if}

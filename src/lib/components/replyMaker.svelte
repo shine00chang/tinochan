@@ -1,5 +1,4 @@
 <script>
-    import { invalidateAll } from '$app/navigation';
     import { createEventDispatcher } from 'svelte';
 
     const  dispatch = createEventDispatcher();
@@ -28,7 +27,6 @@
         } else {
             console.log('reply created');
             reset();
-            await invalidateAll();
         }
     }
 

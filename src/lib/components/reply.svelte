@@ -27,14 +27,14 @@
 
 
 
-<div class="flex m-3 mr-0">
+<div class="flex mx-3 mr-0">
     <div class="mr-6 w-1 bg-zinc-200">
     </div>
 
     <div class="grow">
         <!-- Replying Interface -->
         {#if replying}
-            <ReplyMaker on:done={() => replying=false} forumId={forumId} referenceId={reply._id}/>
+            <ReplyMaker on:done on:done={() => replying=false} forumId={forumId} referenceId={reply._id}/>
         {/if}
 
         <!-- reference replies -->

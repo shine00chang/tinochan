@@ -7,8 +7,9 @@ const Forums  = db.collection("Forums");
 const Replies = db.collection("Replies");
 
 
-export async function load({ params }) {
+export async function GET({ params }) {
 
+    console.log(params);
     // Fetch forum by slug (id)
     let _id;
     try {
@@ -61,5 +62,7 @@ export async function load({ params }) {
     // Cast id from ObjectId into string
     forum._id = forum._id.toString();
 
-    return { forum, replies };
+    return new Response(
+        JSON.stringify({ forum, replies }), 
+        { status: 200 });
 }
