@@ -27,3 +27,4 @@
 <div align="center">
 
 [Launch](https://tinochan.vercel.app) 
+learn more about our club & tech [here](https://tinovation.org)!
